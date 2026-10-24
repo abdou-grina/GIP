@@ -39,62 +39,102 @@ buttonDecimal.addEventListener("click", () => {
 });
 
 buttonOpenParen.addEventListener("click", () => {
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     if (screen.textContent === "0"){ screen.textContent = "";}
     screen.textContent += "(";
 });
 
 buttonCloseParen.addEventListener("click", () => {
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     if (screen.textContent === "0"){ screen.textContent = "";}
     screen.textContent += ")";
 });
 
 button1.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
+
     screen.textContent += "1";
 });
 
 button2.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
+
     screen.textContent += "2";
 });
 
 button3.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "3";
 });
 
 button4.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "4";
 });
 
 button5.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "5";
 });
 
 button6.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "6";
 });
 
 button7.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "7";
 });
 
 button8.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "8";
 });
 
 button9.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "9";
 });
 
 button0.addEventListener("click", () => {
-    if (screen.textContent === "0"){ screen.textContent = "";}
+    if (screen.textContent === "0" || justCalculated) {
+        screen.textContent = "";
+        justCalculated = false;
+    }
     screen.textContent += "0";
 }); 
 
@@ -119,19 +159,23 @@ buttonDivide.addEventListener("click", () => {
 });
 
 buttonEquals.addEventListener("click", () => {
-    try{
-        if (eval(screen.textContent) === Infinity){
-            throw new Error("Division by zero");
+    try {
+        const result = eval(screen.textContent);
+
+        if (!Number.isFinite(result)) {
+            throw new Error("Invalid result");
         }
-        screen.textContent = eval(screen.textContent);
-    }
-    catch(err){
+
+        screen.textContent = result;
+        justCalculated = true;
+
+    } catch (err) {
         screen.textContent = "Error";
+
         setTimeout(() => {
             screen.textContent = "0";
         }, 500);
     }
-    
 });
 
 document.addEventListener("keydown", (event) => {
