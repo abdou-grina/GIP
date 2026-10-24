@@ -1,0 +1,9 @@
+# Compiled executables
+min
+binary-string
+
+# Object files
+*.o
+
+# Other compiled output
+*.out
